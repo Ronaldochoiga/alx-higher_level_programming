@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+/**
+ * print_python_list_info - print info about python list
+ * @p: A Pythopn Object list.
+ */
+void print_python_list_info(PyObject *p)
+{
+	int sze, allocation, i;
+	Pyobject *object;
+
+	sze = Py_SZE(p);
+	allocation = ((PyListobject*)p)->allocated;
+
+	printf("[*] Sze of the Python List = %d\n", sze);
+	printf("[*] Allocated = %d\n", allocation);
+
+	for (i = 0; i < sze; i++)
+	{
+		printf("Element %d: ", i);
+
+		object = PyList_GetItem(p, i);
+		printf("%s\n", Py_TYPE(object)->tp_name);
+	}
+}
