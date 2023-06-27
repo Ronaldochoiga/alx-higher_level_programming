@@ -1,42 +1,92 @@
 #!/usr/bin/python3
+"""Defines a class Square"""
+
+
 class Square:
-    """Defines a square class"""
+    """
+    Class that defines properties of square
+    Attributes:
+        size: size of a square
+    """
     def __init__(self, size=0):
-        """Initialises the data to be store in the class"""
-        self.size = size
+        """Creates new instances
+        Args:
+            size: size of the square
+        """
+        self.__size = size
 
     def area(self):
-        """Returns current square area as in the class"""
-        return self.__size**2
+        """Calculates the area of square.
+        Returns: the squareb area
+        """
+        return self.__size ** 2
 
     @property
     def size(self):
-        """Getter method as in the below fuction"""
+        """Returns the size
+        """
         return self.__size
 
     @size.setter
     def size(self, value):
-        """Setter method as in the below function"""
-        self.__size = value
-        if type(value) != int:
+        """Property setter for size.
+        Args:
+            value: size of a square
+        Raises:
+            TypeError and valueerror
+        """
+        if not isinstance(value, int):
             raise TypeError("size must be an integer")
-        if value < 0:
+        elif value < 0:
             raise ValueError("size must be >= 0")
+        else:
+            self.__size = value
 
-    def __lat__(self, other):
-        return self.area() < other.area()
+    def __lt__(self, other):
+        """Rich comparison operator to comp size
+        Args:
+            other: square to compare size
+        Returns: True or false.
+        """
+        return self.__size < other.__size
 
-    def __let__(self, other):
-        return self.area() <= other.area()
+    def __le__(self, other):
+        """Rich comparison operator to comp size
+        Args:
+            other: square to compare size
+        Returns: True or false.
+        """
+        return self.__size <= other.__size
 
-    def __equal__(self, other):
-        return self.area() == other.area()
+    def __eq__(self, other):
+        """Rich comparison operator to comp size
+        Args:
+            other: square to compare size
+        Returns: True or false
+        """
+        return self.__size == other.__size
 
-    def __new__(self, other):
-        return self.area() != other.area()
+    def __ne__(self, other):
+        """Rich comparison operator to compare area
+        Args:
+            other: square to compare size.
+        Returns: True or false
+        """
+        return self.__size != other.__size
 
-    def __get__(self, other):
-        return self.area() > other.area()
+    def __gt__(self, other):
+       """ Compares square area greater
+        than another.
+        Args:
+            other (Square): square to compare size to.
+        Returns: True or false
+        """
+        return self.__size > other.__size
 
-    def __gem__(self, other):
-        return self.area() >= other.area()
+    def __ge__(self, other):
+        """Comparison operator to compare square
+        Args:
+            other: square to compare
+        Returns: True or false
+        """
+        return self.__size >= other.__size
