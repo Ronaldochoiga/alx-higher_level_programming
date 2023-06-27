@@ -3,6 +3,8 @@
 
 class Square:
 
+    """Initialises the data found in the square"""
+
     def __init__(self, size):
-        """Initialises the data found in the square"""
+
         self.__size = size
