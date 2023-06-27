@@ -1,23 +1,34 @@
 #!/usr/bin/python3
+
+"""Defines a square class"""
+    
 class Square:
     """Defines a square class"""
     def __init__(self, size=0, position=(0, 0)):
-        """Initialises the data from the class"""
+        """Initialises the data from the class
+        """
+
         self.size = size
         self.position = position
 
     def area(self):
-        """Returns current square area of the square class"""
+        """Returns current square area of the square class
+        """
+        
         return self.__size**2
 
     @property
     def size(self):
-        """Getter method in the above function"""
+        """Getter method in the above function
+        """
+        
         return self.__size
 
     @size.setter
     def size(self, value):
-        """Setter method in the bellow function"""
+        """Setter method in the bellow function
+        """
+
         self.__size = value
         if type(value) != int:
             raise TypeError("size must be an integer")
@@ -25,7 +36,9 @@ class Square:
             raise ValueError("size must be >= 0")
 
     def my_print(self):
-        """Prints the square itself"""
+        """Prints the square itself
+        """
+
         if self.__size == 0:
             print()
         else:
@@ -40,12 +53,19 @@ class Square:
 
     @property
     def position(self):
-        """Getter method as in the below function"""
+        """Getter method as in the below function
+
+        Args:
+            value: which is position of square
+        """
         return self.__position
 
     @position.setter
     def position(self, value):
-        """Setter method as in the below function"""
+        """Setter method as in the below function
+        
+        """
+
         if type(value) != tuple or len(value) != 2:
             raise TypeError("position must be a tuple of 2 positive integers")
         if any(type(k) != int for k in value) or any(l < 0 for l in value):
@@ -53,7 +73,10 @@ class Square:
         self.__position = value
 
     def __str__(self):
-        """Same print behaviour as my_print function"""
+        """Same print behaviour as my_print function
+        
+        Returns: square
+        """
         s = ""
         if not self.__size:
             return s
