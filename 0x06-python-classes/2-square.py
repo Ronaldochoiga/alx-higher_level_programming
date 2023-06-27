@@ -4,14 +4,17 @@
 
 class Square:
 
-    """ class that Defines a square in the python code
+    """
+    Class that Defines a square in the python code
+    
     Attributes:
-    Size: 1 sided square
+    Size: one sided square
     """
     
     def __init__(self, size=0):
 
         """Initialises the data inside the class
+        
         Args:
         Size: one sided quare
         """
