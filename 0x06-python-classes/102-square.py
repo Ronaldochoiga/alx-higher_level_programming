@@ -6,12 +6,14 @@
 class Square:
     """
     Class that defines properties of square
+    
     Attributes:
         size: size of a square
     """
 
     def __init__(self, size=0):
         """Creates new instances
+    
         Args:
             size: size of the square
         """
@@ -20,6 +22,7 @@ class Square:
 
     def area(self):
         """Calculates the area of square.
+        
         Returns: the squareb area
         """
 
@@ -28,6 +31,7 @@ class Square:
     @property
     def size(self):
         """Returns the size
+        
         """
 
         return self.__size
@@ -35,8 +39,10 @@ class Square:
     @size.setter
     def size(self, value):
         """Property setter for size.
+        
         Args:
             value: size of a square
+        
         Raises:
             TypeError and valueerror
         """
@@ -50,8 +56,10 @@ class Square:
 
     def __lt__(self, other):
         """Rich comparison operator to comp size
+        
         Args:
             other: square to compare size
+        
         Returns: True or false.
         """
 
@@ -59,8 +67,10 @@ class Square:
 
     def __le__(self, other):
         """Rich comparison operator to comp size
+        
         Args:
             other: square to compare size
+        
         Returns: True or false.
         """
 
@@ -68,8 +78,10 @@ class Square:
 
     def __eq__(self, other):
         """Rich comparison operator to comp size
+        
         Args:
             other: square to compare size
+        
         Returns: True or false
         """
 
@@ -77,8 +89,10 @@ class Square:
 
     def __ne__(self, other):
         """Rich comparison operator to compare area
+        
         Args:
             other: square to compare size.
+        
         Returns: True or false
         """
 
@@ -87,17 +101,22 @@ class Square:
     def __gt__(self, other):
        """ Compares square area greater
         than another.
-        Args:
+        
+       
+       Args:
             other (Square): square to compare size to.
-        Returns: True or false
+        
+       Returns: True or false
         """
 
        return self.__size > other.__size
 
     def __ge__(self, other):
         """Comparison operator to compare square
+       
         Args:
             other: square to compare
+        
         Returns: True or false
         """
 
