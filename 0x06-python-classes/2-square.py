@@ -3,13 +3,13 @@
 """Defines a square in the python code"""
 
 class Square:
-    """Defines a square in the python code
-    attributes:
+    """ class that Defines a square in the python code
+    Attributes:
     Size: 1 sided square
     """
     def __init__(self, size=0):
         """Initialises the data inside the class
-        args:
+        Args:
         Size: one sided quare
         """
         self.__size = size
