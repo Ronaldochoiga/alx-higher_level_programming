@@ -3,9 +3,15 @@
 """Defines a square in the python code"""
 
 class Square:
-    """Defines a square in the python code"""
+    """Defines a square in the python code
+    attributes:
+    Size: 1 sided square
+    """
     def __init__(self, size=0):
-        """Initialises the data inside the class"""
+        """Initialises the data inside the class
+        args:
+        Size: one sided quare
+        """
         self.__size = size
         if type(size) != int:
             raise TypeError("size must be an integer")
