@@ -1,78 +1,127 @@
 #!/usr/bin/python3
-"""Rectangle module.
 
-This module contains a class that defines a rectangle.
+"""Rectangle Class.
 
+This module contains an class that defines a rect.
+
+Usage Example:
+
+    Rectangle = __import__('0-rectangle').Rectangle
+
+    my_rectangle = Rectangle()
+    print(type(my_rectangle))
+    print(my_rectangle.__dict__)
 """
 
 
-class Rectangle():
-    """Defines a rect."""
+class Rectangle:
+    """Defines the sides of a rectangle.
+
+    Attribute:
+        width: An integer showing the width of the rect obj.
+        height: An integer showing the height of the rect obj.
+    """
 
     def __init__(self, width=0, height=0):
-        """set the attributes for the Rect obj.
+        """An object construt method.
+
+        assigns Rect with width and height.
 
         Args:
-            width (int): the width of the rect.
-            height (int): the height of the rect.
+            width: An integer showing object width.
+                  default is value of 0.
+            height: An integer showing object height.
+                  default is value of 0.
         """
-        self.width = width
-        self.height = height
+        self.__width = width
+        self.__height = height
 
     def __str__(self):
-        """gives the print behavior of the Rect obj."""
-        rectangle = ""
-
-        if self.__width > 0 and self.__height > 0:
-            for y in range(self.__height):
-                rectangle += '#' * self.__width + '\n'
-
-        return rectangle[:-1]
+        """Returns a printable string representation
+        of a Rectangle for instance, filled with the '#' character."""
+        if self.__height == 0 or self.__width == 0:
+            return ""
+        rec_str = ""
+        for i in range(self.__height):
+            for j in range(self.__width):
+                rec_str += "#"
+            rec_str += "\n"
+        return rec_str[:-1]
 
     def __repr__(self):
-        """Sets the repr behavior of the rect obj."""
-        return "rect({:d}, {:d})".format(self.__width, self.__height)
+        """Return a string representation of a Rectangle instance
+        that is able to create a new instance by using eval()
+        """
+        return "Rectangle({}, {})".format(self.__width, self.__height)
+
+    def __del__(self):
+        """ Print a message for del
+        """
+        print("Bye rectangle...")
 
     @property
     def width(self):
-        """Get or set the width of the rect."""
+        """Gets the width private att value.
+
+        Returns:
+            The width private att
+        """
         return self.__width
 
     @width.setter
     def width(self, value):
-        if type(value) is int:
-            if value >= 0:
-                self.__width = value
-            else:
-                raise ValueError("width must be >= 0")
-        else:
+        """Sets the width att value.
+
+        Validates the assignment of the width att.
+
+        Arg:
+            value: the value to be set
+        """
+        if not isinstance(value, int):
             raise TypeError("width must be an integer")
+        if value < 0:
+            raise ValueError("width must be >= 0")
+        self.__width = value
 
     @property
     def height(self):
-        """Get or set the height of the rect."""
+        """Gets the height priv att value.
+
+        Returns:
+            The height priv att
+        """
         return self.__height
 
     @height.setter
     def height(self, value):
-        if type(value) is int:
-            if value >= 0:
-                self.__height = value
-            else:
-                raise ValueError("height must be >= 0")
-        else:
+        """Sets the height priv att value.
+
+        Validates the assignment of the height priv att.
+
+        Arg:
+            value: the value to be set
+        """
+        if not isinstance(value, int):
             raise TypeError("height must be an integer")
+        if value < 0:
+            raise ValueError("height must be >= 0")
+        self.__height = value
 
     def area(self):
-        """gives the current rect area."""
+        """A public object method.
+
+        Returns:
+            The current rectangle area
+        """
         return self.__width * self.__height
 
     def perimeter(self):
-        """gives the current rect perimeter."""
-        if self.__width is 0 or self.__height is 0:
-            return 0
-        return self.__width * 2 + self.__height * 2
+        """A public object method.
 
-    def __del__(self):
-        """gives the del behavior of the rect obj."""
-        print("Bye rect...")
+        Returns:
+            The current rectangle perimeter
+        """
+        if self.width == 0 or self.height == 0:
+            return 0
+        else:
+            return 2 * (self.__width + self.__height)

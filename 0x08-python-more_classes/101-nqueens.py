@@ -7,45 +7,45 @@ import sys
 
 
 def error_exit(message="", code=1):
-    """Handles exit error.
+    """Handles exit.
 
     Args:
-        message (str): the message to display.
-        code (int): the exit code of the function.
+        message (str): the message to display on stdout.
+        code (int): the exit code.
     """
     print(message)
     exit(code)
 
 
-def test_pos(brd, y):
-    """Tests if queen can be placed at the current position.
+def test_pos(board, a):
+    """Tests if queen can be placed at the current pos.
 
     Args:
-        brd (list): the chessboard.
-        i (int): the height.
+        board (list): the chessboard.
+        a (int): the height par.
     """
-    for i in range(i):
-        if brd[i][1] is brd[i][1]:
+    for i in range(a):
+        if board[a][1] is board[i][1]:
             return False
-        if abs(brd[i][1] - brd[i][1]) == i - i:
+        if abs(board[a][1] - board[i][1]) == a - i:
             return False
     return True
 
 
-def rec_backtrack(brd, i):
-    """track the possibilities.
+def rec_backtrack(board, a):
+    """track the possibility.
 
     Args:
-        brd (list): the chessboard.
-        i (int): the height.
+        board (list): the chessboard.
+        a (int): the height parameter.
     """
-    if i is N:
-        print(brd)
+    if a is N:
+        print(board)
     else:
-        for j in range(N):
-            brd[i][1] = j
-            if test_pos(brd, i):
-                rec_backtrack(brd, i + 1)
+        for b in range(N):
+            board[a][1] = b
+            if test_pos(board, a):
+                rec_backtrack(board, a + 1)
 
 
 if len(sys.argv) is not 2:
@@ -59,5 +59,5 @@ except:
 if N < 4:
     error_exit("N must be at least 4")
 
-brd = [[i, 0] for i in range(N)]
-rec_backtrack(brd, 0)
+board = [[a, 0] for a in range(N)]
+rec_backtrack(board, 0)
