@@ -1,21 +1,20 @@
 #!/usr/bin/python3
 """
 This is the divide module.
-Divide all elements of a matrix
 """
 
 
 def matrix_divided(matrix, div):
-    """matrix must be a list of lists of int/fl
+    """matrix must be a list of lists of integers/floats
     Returns a new matrix
     """
     nmatrix = []
-    len = 0
+    leng = 0
 
-    # Divides all elements of a matrix
+
     if isinstance(div, int) is False and isinstance(div, float) is False:
         raise TypeError('div must be a number')
-    # Matrix must be a list of integers or floats, TypeError
+
     if type(matrix) is not list:
         raise TypeError('matrix must be a matrix (list of lists) '
                         'of integers/floats')
@@ -25,34 +24,30 @@ def matrix_divided(matrix, div):
     if not isinstance(matrix, list):
         raise TypeError('matrix must be a matrix (list of lists) '
                         'of integers/floats')
-    # matix has to exist, can't be less or equal to 0
+
     if len(matrix[0]) <= 0:
         raise TypeError('matrix must be a matrix (list of lists) '
                         'of integers/floats')
-    # 1.let's create new matrix with nrow
+
     for row in matrix:
-        nrow = []
-        # matrix must be a list
+        newrow = []
+
         if type(row) is not list:
             raise TypeError('matrix must be a matrix (list of lists) '
                             'of integers/floats')
-        # 2. row is empty
-        if len is 0:
-            len = len(row)
-        # Each row must be the same size, TypeError
-        elif len(row) is not len:
+
+        if leng is 0:
+            leng = len(row)
+
+        elif len(row) is not leng:
             raise TypeError('Each row of the matrix must have the same size')
-        # 3. each item has to be an integer or float
+
         for item in row:
             if type(item) is not int and type(item) is not float:
                 raise TypeError('matrix must be a matrix (list of lists) '
                                 'of integers/floats')
-            # 4. add content to the row
-            # elements will be divided by div
-            # round() function returns a floating point number that is
-            # a rounded version of the specified number
-            # with the specified number of decimals
-            nrow.append(round(item / div, 2))
-        # add content to the matrix
-        nmatrix.append(nrow)
+
+            newrow.append(round(item / div, 2))
+
+        nmatrix.append(newrow)
     return nmatrix
