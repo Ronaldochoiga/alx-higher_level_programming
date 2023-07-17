@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Module base.
-Defines a Base class for more classes.
+Defines Base class for more classes in project.
 """
 
 import json
@@ -19,7 +19,7 @@ class Base:
         """Initializes a Base instance.
 
         Args:
-            - id: instance id
+            - id: id of the base instance
         """
 
         if type(id) != int and id is not None:
@@ -32,12 +32,12 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        """gives a _json rep of listed dict.
+        """Returns a JSON rep of list_dictionaries.
 
         Args:
             - list_dictionaries: list of dicts
 
-        gives: _json rep of the list
+        Returns: JSON representation of the list
         """
 
         if list_dictionaries is None or list_dictionaries == []:
@@ -45,27 +45,33 @@ class Base:
         if (type(list_dictionaries) != list or
            not all(type(x) == dict for x in list_dictionaries)):
             raise TypeError("list_dictionaries must be a list of dictionaries")
-        return _json.dumps(list_dictionaries)
+        return json.dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """Writes the _json string rep of
+        """prints the JSON str rep of
         list_objs to a file.
 
         Args:
-            - list_objs: instance list of who inherits base
+            - list_objs: list of instances who inherits of Base
+        """
+        """
+        if type(list_objs) != list and list_objs is not None:
+            raise TypeError("list_objs must be a list of instances")
+        if any(issubclass(type(x), Base) is False for x in list_objs):
+            raise TypeError("list_objs must be a list of instances")
         """
         if list_objs is None or list_objs == []:
             jstr = "[]"
         else:
             jstr = cls.to_json_string([o.to_dictionary() for o in list_objs])
-        filename = cls.__name__ + "._json"
+        filename = cls.__name__ + ".json"
         with open(filename, 'w') as f:
                 f.write(jstr)
 
     @staticmethod
     def from_json_string(json_string):
-        """gives the list of the _json stringrep.
+        """Returns list of the JSON str rep.
 
         Args:
             - json_string: string to be converted to list
@@ -75,17 +81,17 @@ class Base:
         if json_string is not None and json_string != '':
             if type(json_string) != str:
                 raise TypeError("json_string must be a string")
-            l = _json.loads(json_string)
+            l = json.loads(json_string)
         return l
 
     @classmethod
     def create(cls, **dictionary):
-        """gives an instance with set attributes.
+        """Returns an instance with attributes set.
 
         Args:
-            - dictionary: used as **kwargs
+            - dictionary: uses **kwargs
 
-        gives: instance created
+        Returns: instance created after success
         """
         if cls.__name__ == 'Rectangle':
             dummy = cls(1, 1)
@@ -96,9 +102,9 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        """gives a list of instances."""
+        """Returns list of instances created."""
 
-        filename = cls.__name__ + "._json"
+        filename = cls.__name__ + ".json"
         l = []
         list_dicts = []
         if os.path.exists(filename):
@@ -111,7 +117,7 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        """Serializes list_objs in
+        """provides serial number to the  list_objs in CSV format
         and saves it to a file.
 
         Args:
@@ -137,9 +143,9 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
-        """Deserializes CSV from a file.
+        """removoves the serial CSV format from a file.
 
-        gives: list of instances
+        Returns: list of instances
         """
 
         filename = cls.__name__ + ".csv"
@@ -162,12 +168,12 @@ class Base:
 
     @staticmethod
     def draw(list_rectangles, list_squares):
-        """Opens Turtle window and draws
-        rectangles and squares.
+        """Opens Turtle window, draws
+        rectangles or squares.
 
         Args:
-            - list_rectangles: list of Rectangle instances
-            - list_squares: list of Square instances
+            - list_rectangles: lists Rectangular instances
+            - list_squares: lists Square instances
         """
 
         import turtle
@@ -191,8 +197,8 @@ class Base:
 
     @staticmethod
     def draw_rect(t, rect):
-        """method that draws a Rectangle
-        or Square(helper).
+        """Helper method that manages to draw a Rectangle
+        or Square.
         """
 
         t.penup()
