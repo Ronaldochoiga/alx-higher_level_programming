@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+"""Basemodel class
+
+A module with a class that defines all other subclasses of the project.
+"""
+import models
+from uuid import uuid4
+from datetime import datetime
+
+time_format = "%Y-%m-%dT%H:%M:%S.%f"
+
+class BaseModel
+"""Shows the details/blueprint of the subclasses.
+
+Attributes:
+    id: string - this is assigned during creation and updating and is random.
+jfjglkfklfjkfglkglgm
+jgkglfmngfm gl,g
+uptdated_at: this assigs the time when an objected is changed
