@@ -1,0 +1,4 @@
+-- this script drops all columns with score below 5
+DROP TABLE row
+FROM `second_table`
+WHERE `score` <= 5;
